@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void messageOnCreate(){
         AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
-        myDialog.setMessage("Write your equation separating numbers and symbols with a space.\nRemember it's a Reverse Polish Notation Calculator!!");
-        myDialog.setTitle("Welcome!");
-        myDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        myDialog.setMessage(R.string.body_init_message);
+        myDialog.setTitle(R.string.title_init_message);
+        myDialog.setPositiveButton(R.string.confirm_init_message, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {}
         });

@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="20dp"
-            android:text="Stack:" />
+            android:text="@string/current_stack" />
 
         <TextView
             android:id="@+id/txtCurrent"
@@ -43,7 +43,7 @@
             android:layout_weight="1"
             android:textSize="20dp"
             android:gravity="right|center"
-            android:text="Result:" />
+            android:text="@string/current_result" />
 
         <TextView
             android:id="@+id/txtValue"
@@ -231,21 +231,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="SIN" />
+                    android:text="@string/trigonometric_SIN" />
 
                 <Button
                     android:id="@+id/btnCos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="COS" />
+                    android:text="@string/trigonometric_COS" />
 
                 <Button
                     android:id="@+id/btnTan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TAN" />
+                    android:text="@string/trigonometric_TAN" />
             </LinearLayout>
 
             <LinearLayout
