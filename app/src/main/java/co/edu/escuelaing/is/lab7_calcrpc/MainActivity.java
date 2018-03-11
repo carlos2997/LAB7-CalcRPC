@@ -109,19 +109,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(view.getId() == number9.getId()){
             txtCurrent.setText(rpnCalcService.addValue("9"));
         }else if(view.getId() == operSum.getId()){
-            txtCurrent.setText(rpnCalcService.addValue("+"));
+            if(!rpnCalcService.operatorValidation()){
+                txtCurrent.setText(rpnCalcService.addValue("+"));
+            }
         }else if(view.getId() == operRes.getId()){
-            txtCurrent.setText(rpnCalcService.addValue("-"));
+            if(!rpnCalcService.operatorValidation()){
+                txtCurrent.setText(rpnCalcService.addValue("-"));
+            }
         }else if(view.getId() == operMul.getId()){
-            txtCurrent.setText(rpnCalcService.addValue("*"));
+            if(!rpnCalcService.operatorValidation()){
+                txtCurrent.setText(rpnCalcService.addValue("*"));
+            }
         }else if(view.getId() == operDiv.getId()){
-            txtCurrent.setText(rpnCalcService.addValue("/"));
+            if(!rpnCalcService.operatorValidation()){
+                txtCurrent.setText(rpnCalcService.addValue("/"));
+            }
         }else if(view.getId() == point.getId()){
             if(!rpnCalcService.decimalValidation()){
                 txtCurrent.setText(rpnCalcService.addValue("."));
             }
         }else if(view.getId() == operPow.getId()){
-            txtCurrent.setText(rpnCalcService.addValue("^"));
+            if(!rpnCalcService.operatorValidation()) {
+                txtCurrent.setText(rpnCalcService.addValue("^"));
+            }
         }else if(view.getId() == operSin.getId()){
             if(rpnCalcService.TrigonometricValidation()){
                 txtCurrent.setText(rpnCalcService.addValue("SIN"));
