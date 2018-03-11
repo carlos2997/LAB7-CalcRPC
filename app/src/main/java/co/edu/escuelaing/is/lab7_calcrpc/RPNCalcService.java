@@ -56,10 +56,20 @@ public class RPNCalcService extends CalcService{
             }
         }
         Double eval = stack.pop();
-        System.out.println("Final Answer: " + eval);
         return eval;
     }
 
+    boolean TrigonometricValidation(){
+        if(current.length()>1){
+            String lastValue = current.substring(current.length()-1);
+            if(lastValue.equals(" ")){
+                return true;
+            }
+        }else{
+            return false;
+        }
+        return false;
+    }
 
 
     @Override

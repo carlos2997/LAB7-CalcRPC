@@ -29,14 +29,17 @@ public abstract class CalcService {
     }
 
     boolean spaceValidation(){
-        if(current.length()>0 && current.substring(current.length()-1).equals(" ")){
+        if(current.length()>0){
+            if(current.substring(current.length()-1).equals(" ")){
+                return true;
+            }
+        }else{
             return true;
         }
         return false;
     }
 
     boolean decimalValidation(){
-
         if(current.length()>0){
             String lastValue = current.substring(current.length()-1);
             if("+-*/^ .NS".indexOf(lastValue) >= 0){
@@ -51,6 +54,8 @@ public abstract class CalcService {
     void resetValues(){
         current = "";
     }
+
+    abstract boolean TrigonometricValidation();
 
     abstract String addValue(String num);
 

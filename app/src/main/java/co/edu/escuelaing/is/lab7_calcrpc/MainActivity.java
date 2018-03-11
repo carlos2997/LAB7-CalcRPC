@@ -1,5 +1,7 @@
 package co.edu.escuelaing.is.lab7_calcrpc;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +16,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     CalcService rpnCalcService;
 
+    private void messageOnCreate(){
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
+        myDialog.setMessage("Write your equation separating numbers and symbols with a space.\nRemember it's a Reverse Polish Notation Calculator!!");
+        myDialog.setTitle("Welcome!");
+        myDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {}
+        });
+        AlertDialog dialog = myDialog.create();
+        dialog.show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        messageOnCreate();
         rpnCalcService = new RPNCalcService();
 
         txtResult = findViewById(R.id.txtValue);
@@ -109,11 +123,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(view.getId() == operPow.getId()){
             txtCurrent.setText(rpnCalcService.addValue("^"));
         }else if(view.getId() == operSin.getId()){
-            txtCurrent.setText(rpnCalcService.addValue("SIN"));
+            if(rpnCalcService.TrigonometricValidation()){
+                txtCurrent.setText(rpnCalcService.addValue("SIN"));
+            }
         }else if(view.getId() == operCos.getId()){
-            txtCurrent.setText(rpnCalcService.addValue("COS"));
+            if(rpnCalcService.TrigonometricValidation()){
+                txtCurrent.setText(rpnCalcService.addValue("COS"));
+            }
         }else if(view.getId() == operTan.getId()){
-            txtCurrent.setText(rpnCalcService.addValue("TAN"));
+            if(rpnCalcService.TrigonometricValidation()){
+                txtCurrent.setText(rpnCalcService.addValue("TAN"));
+            }
         }else if(view.getId() == btnDEL.getId()){
             txtCurrent.setText(rpnCalcService.deleteLastValue());
         }else if(view.getId() == btnAC.getId()){
