@@ -13,7 +13,8 @@ public class RPNCalcService extends CalcService{
         super();
     }
 
-    private Double compute(String[] expr) throws ArithmeticException, EmptyStackException, ServicesException {
+    private Double compute(String[] expr) throws ServicesException, ArithmeticException,
+    EmptyStackException {
         Stack<Double> stack = new Stack<>();
 
         for (String token : expr) {
@@ -29,8 +30,13 @@ public class RPNCalcService extends CalcService{
                     break;
                 case "/":
                     double divisor = stack.pop();
-                    stack.push(stack.pop() / divisor);
-                    break;
+                    double dividendo = stack.pop();
+                    if(divisor>0){
+                        stack.push(dividendo / divisor);
+                        break;
+                    }else{
+                        throw new ServicesException("No se puede dividir por 0");
+                    }
                 case "^":
                     double exponent = stack.pop();
                     stack.push(Math.pow(stack.pop(), exponent));
@@ -88,22 +94,27 @@ public class RPNCalcService extends CalcService{
 
     @Override
     public String evalExpression() {
-        String[] splitValues = current.split(" ");
         try{
-            Double evalCompute = compute(splitValues);
-            if((evalCompute > Math.floor(evalCompute))){
-                String roundCalc = Double.toString(evalCompute);
-                if(roundCalc.length()>6){
-                    return roundCalc.substring(0,6);
+            if(current.length()==0){
+                return null;
+            }else {
+                String[] splitValues = current.split(" ");
+                Double evalCompute = compute(splitValues);
+                if ((evalCompute > Math.floor(evalCompute))) {
+                    String roundCalc = Double.toString(evalCompute);
+                    if (roundCalc.length() > 6) {
+                        return roundCalc.substring(0, 6);
+                    }
+                    return roundCalc;
+                } else {
+                    return Integer.toString(evalCompute.intValue());
                 }
-                return roundCalc;
-            }else{
-                return Integer.toString(evalCompute.intValue());
             }
-        }catch(ArithmeticException | EmptyStackException | ServicesException ex){
+        }catch(EmptyStackException ex){
             return null;
+        }catch(ServicesException | ArithmeticException  ex) {
+            return "Math Error";
         }
-
     }
 
 

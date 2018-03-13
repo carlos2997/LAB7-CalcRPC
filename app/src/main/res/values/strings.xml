@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Lab7-CalcRPC</string>
     <string name="title_init_message">Welcome</string>
-    <string name="body_init_message">Write your equation separating numbers and symbols with a space.\nRemember it's a Reverse Polish Notation Calculator!!</string>
     <string name="confirm_init_message">Ok</string>
     <string name="current_stack">Stack:</string>
     <string name="current_result">Result:</string>
